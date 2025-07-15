@@ -126,8 +126,7 @@ class Bird:
 
 class Wall(pg.sprite.Sprite):
     """
-    足場に関するクラス
-    """
+    足場に関するクラス    """
     def __init__(self, x: int, y: int):
         """
         引数1 x：足場を表示する左上x座標
