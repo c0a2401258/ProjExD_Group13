@@ -329,9 +329,9 @@ def main():
             score_screen("Clear", score.value, screen, timer.value)
             game_end(screen, "Game Clear", (0, 255, 0)) #cキーを押すとゲームクリア
             return 0
-        if tmr2 == it:  # 100~250フレームに1回，ゴリラの攻撃(樽)を出現させる
+        if tmr2 == it:  # 100~250フレーム(2~5秒)に1回，ゴリラの攻撃(樽)を出現させる
             tarus.add(taru(gorilla))
-            it = random.randint(100, 250)
+            it = random.randrange(100, 250, 50)
             tmr2 = 0
         if gorilla.rct.colliderect(bird.rct):  # ゴリラとあたったら終了
             score_screen("a", score.value, screen, timer.value)
