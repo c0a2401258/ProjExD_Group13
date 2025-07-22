@@ -268,7 +268,8 @@ def main():
     gorilla = enemy()
     tarus = pg.sprite.Group()
     tarus.add(taru(gorilla))
-    tmr = 0  
+    tmr1 = 0
+    tmr2 = 0 
     timer = Timer()  
     it = 200
 
@@ -328,9 +329,10 @@ def main():
             score_screen("Clear", score.value, screen, timer.value)
             game_end(screen, "Game Clear", (0, 255, 0)) #cキーを押すとゲームクリア
             return 0
-        if tmr%it == 0:  # 200フレームに1回，ゴリラの攻撃(樽)を出現させる
+        if tmr2 == it:  # 100~250フレームに1回，ゴリラの攻撃(樽)を出現させる
             tarus.add(taru(gorilla))
             it = random.randint(100, 250)
+            tmr2 = 0
         if gorilla.rct.colliderect(bird.rct):  # ゴリラとあたったら終了
             score_screen("a", score.value, screen, timer.value)
             game_end(screen, "Game Over", (255, 0, 0)) #oキーを押すとゲームオーバー
@@ -343,8 +345,9 @@ def main():
         score.update(screen)
         timer.update(screen)
         pg.display.update()
-        tmr += 1
-        if tmr % 50 == 0:
+        tmr1 += 1
+        tmr2 += 1
+        if tmr1 % 50 == 0:
             score.value += 1
             timer.value -= 1
         if timer.value < 0:
